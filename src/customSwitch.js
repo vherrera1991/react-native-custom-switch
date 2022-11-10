@@ -32,7 +32,8 @@ export default function CustomSwitch({
   onSwitchBackgroundColor,
   animationSpeed,
   startOnLeft,
-  disabled, 
+  disabled,
+  children,
 }) {
   
   const [ toggleRight, setToggleRight ] = useState(startOnLeft === true ? true : false);
@@ -184,32 +185,36 @@ export default function CustomSwitch({
         layoutAnim.Opacity()
        ) : null
     }}>
-      <Animated.View style={toggleStyle}>
-        {(switchLeftText && toggleRight)
-          && 
-            <View style={{width: toggleStyle.width - buttonStyle.width - toggleStyle.padding*2}}>
-              <Text style={[styles.switchText, switchLeftTextStyle]}>{switchLeftText}</Text>
-            </View>
-        }
-        <View style={[styles.button, buttonStyle]}>
-          {(buttonText && onSwitchButtonText)
-            ? toggleRight 
-              ? <Text style={onSwitchButtonTextStyle}>{onSwitchButtonText}</Text>
-              : <Text style={buttonTextStyle}>{buttonText}</Text>
-            : (onSwitchButtonText && !buttonText && toggleRight)
-              ? <Text style={onSwitchButtonTextStyle}>{onSwitchButtonText}</Text>
-              : buttonText 
-                ? <Text style={buttonTextStyle}>{buttonText}</Text>
-            : null
-          } 
-        </View>
-        {(switchRightText && !toggleRight)
-          && 
-            <View style={{width: toggleStyle.width - buttonStyle.width - toggleStyle.padding*2}}>
-              <Text style={[styles.switchText, switchRightTextStyle]}>{switchRightText}</Text>
-            </View>
-        }
-      </Animated.View>
+      <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+        <Animated.View style={toggleStyle}>
+          {(switchLeftText && toggleRight)
+            && 
+              <View style={{width: toggleStyle.width - buttonStyle.width - toggleStyle.padding*2}}>
+                <Text style={[styles.switchText, switchLeftTextStyle]}>{switchLeftText}</Text>
+              </View>
+          }
+          <View style={[styles.button, buttonStyle]}>
+            {(buttonText && onSwitchButtonText)
+              ? toggleRight 
+                ? <Text style={onSwitchButtonTextStyle}>{onSwitchButtonText}</Text>
+                : <Text style={buttonTextStyle}>{buttonText}</Text>
+              : (onSwitchButtonText && !buttonText && toggleRight)
+                ? <Text style={onSwitchButtonTextStyle}>{onSwitchButtonText}</Text>
+                : buttonText 
+                  ? <Text style={buttonTextStyle}>{buttonText}</Text>
+              : null
+            } 
+          </View>
+          {(switchRightText && !toggleRight)
+            && 
+              <View style={{width: toggleStyle.width - buttonStyle.width - toggleStyle.padding*2}}>
+                <Text style={[styles.switchText, switchRightTextStyle]}>{switchRightText}</Text>
+              </View>
+          }
+        </Animated.View>
+        {children}
+      </View>
+      
     </TouchableWithoutFeedback>
   )
 }
