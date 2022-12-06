@@ -1,6 +1,6 @@
 {
   "name": "@islacel/react-native-custom-switch",
-  "version": "1.0.9",
+  "version": "1.0.10",
   "description": "A fully customizable switch component for react native.",
   "main": "src/index.js",
   "scripts": {

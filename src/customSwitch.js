@@ -53,7 +53,7 @@ export default function CustomSwitch({
       LayoutAnimation.configureNext(
         LayoutAnimation.create(
           animationSpeed ? animationSpeed : defaultValues.animationSpeed, 
-          LayoutAnimation.Types.Spring,
+          LayoutAnimation.Types.linear,
           LayoutAnimation.Properties.opacity
         )
       )
